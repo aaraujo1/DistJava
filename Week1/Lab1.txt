@@ -29,9 +29,9 @@ Present a list of products on the "Product List" page
 Display detailed information on the "Product Detail" page
 Include controls (i.e., buttons etc) to do things on the page
 You won't be able to do much when the user clicks on these buttons other than input validation
-Stretch goal: Utilize JavaScriptf or input field validation on forms
+Stretch goal: Utilize JavaScript or input field validation on forms
 Use vanilla JavaScript or jQuery 
-Do NOT use one of the modernJavaScriptframeworks (e.g., Angular) 
+Do NOT use one of the modern JavaScript frameworks (e.g., Angular) 
 If you have not had JavaScript use HTML 5 validation
 Commit and push your code to github.com
 Review the rubric to understand what is expected of you and how you will be graded.
