@@ -1,3 +1,30 @@
+1. Create new project
+
+2. Change contents of index.jsp with my files
+
+3. Add all other files
+
+4. Run on server
+
+5. Start to make it run using servlets 
+
+6.Make classes
+
+Products Class
+attributes
+constuctor 
+getters
+Setters
+Make it a singleton
+
+Inventory.java
+Public Inventory(){
+}
+public static list<products> stuff;
+stuff.add (new Product(.....)
+Public static List<product> getProducts()
+
+
 Part A
 1. Pull "SimpleServer" from the GitHub.
 2. Deploy and run within IntelliJ.
@@ -17,3 +44,5 @@ Step #1
 Step #2
 1.Modify the project from last week to allow the user to select the column (field) to be searched.
 2.Beatify both pages  (Minimally use a table or divs with CSS to format the output).
+
+
