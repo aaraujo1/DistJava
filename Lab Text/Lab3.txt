@@ -1,0 +1,19 @@
+Part A
+1. Pull "SimpleServer" from the GitHub.
+2. Deploy and run within IntelliJ.
+3. Pull "studentdata"
+4. Test within IntelliJ.
+5. Wait until everyone (or almost everyone) have theirs up and running.
+6. Move the java files from "studentdata" to "SimpleServer", excluding "Main.java".
+7. Modify "index.jsp" by replacing the link with a form.
+8. The form should facilitate searches by Account Number, First and Last Name, IpAddress and Email.
+9. Deploy and Run.
+
+Part B
+Step #1
+1.Pull SecondServlet from GitHub
+2.Modify “comic_type” from the second list of parameter values to deal with multiple selections by the user (checkbox).
+
+Step #2
+1.Modify the project from last week to allow the user to select the column (field) to be searched.
+2.Beatify both pages  (Minimally use a table or divs with CSS to format the output).
