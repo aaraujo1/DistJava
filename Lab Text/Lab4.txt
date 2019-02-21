@@ -1,0 +1,13 @@
+1. Pull, NameMVC, Explore the programs 
+2. Start working on the JSP Project.
+
+Modify your store page from the first week to be an MVC application using JSPs, Servlets, controller class, model class, etc...
+
+Product
+NAme
+Description
+Category enum
+Sale bool
+
+3 categories
+3 products each
