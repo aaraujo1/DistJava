@@ -36,6 +36,7 @@ public class Product {
         setPrice(price);
         setCategory(category);
         setSale(sale);
+        setImage(name);
     };
 
 
@@ -49,6 +50,7 @@ public class Product {
     private double price;
     private Category category;
     private boolean sale;
+    private String image;
 
     /*-------------------------------------------------------------*/
     /*-------------------------- METHODS --------------------------*/
@@ -119,6 +121,14 @@ public class Product {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image.replace(' ','_').toLowerCase() + ".jpg";
     }
 }
 

@@ -39,9 +39,9 @@ public class Inventory {
         productsList.get(2).setName("Peanut Butter Stuffed Chocolate Cookies");*/
 
         productsList.add(new Product(1,"Peanut Butter Chocolate Dessert", "dessert with...", 15.00, Category.DESSERT, false));
-        productsList.add(new Product(2,"Peanut Butter Chocolate Layer Cake", "dessert with...", 25.00, Category.DESSERT, true));
-        productsList.add(new Product(3,"Peanut Butter Stuffed Chocolate Cookies", "dessert with...", 10.00, Category.DESSERT, true));
-
+        productsList.add(new Product(2,"Peanut Butter Chocolate Layer Cake", "dessert with...", 25.00, Category.CAKE, true));
+        productsList.add(new Product(3,"Peanut Butter Stuffed Chocolate Cookies", "dessert with...", 10.00, Category.COOKIE, true));
+        productsList.add(new Product(4,"Chocolate Chip Cookie Dough Cupcakes", "cookie dough", 5.00, Category.CAKE,false));
         //productsList.add(new Product("Peanut Butter Chocolate Dessert)"));
     }
 

@@ -14,21 +14,34 @@
     <h1>Cart</h1>
     <form action="bill.go">
         <table>
+            <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col"></th>
+                <th scope="col">Cost</th>
+
+            </tr>
+            <tbody>
             <%
                 List recs = (List) request.getAttribute("catalog");
                 Iterator it = recs.iterator();
                 double total = 0;
                 while (it.hasNext()) {
                     Product product = (Product) it.next();
-                    out.print("<tr class='purch'><td> " + product.getName() + " </td><td>" +
-                            String.format("$%3.2f",product.getPrice()) + "</td></tr>");
+                    out.print("<tr class='purch'><td><img src='./images/" + product.getImage() + "' height='100'></td><td>" +
+                            product.getName() + " </td><td>" +
+                            product.getPriceInDollars() + "</td></tr>");
                     total+=product.getPrice();
                 }
-                out.print("<tr class='total' ><td>Total:</td><td>" +
+                out.print("<tr class='total' ><td>Total:</td><td></td><td>" +
                         String.format("$%3.2f",total) + "</td></tr>");
             %>
+        </tbody>
         </table>
-        <input type="submit" value="Complete Order">
+
+        <%--<input type="submit" value="Complete Order">--%>
+        <button type="submit" class="btn btn-primary mb-2" value="Complete Order">Complete Order</button>
+
     </form>
 
 </div>

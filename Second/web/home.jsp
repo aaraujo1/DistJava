@@ -12,11 +12,13 @@
 
 <!--BODY-->
 <div class="container">
+  <h1>Products On Sale</h1>
   <form action="cartplace.go">
 <table>
   <thead>
   <tr>
     <th scope="col">Product</th>
+    <th scope="col"></th>
     <th scope="col">Cost</th>
     <th scope="col"></th>
   </tr>
@@ -29,7 +31,8 @@
       // Also, notice we do not cast the object returned by the
       // iterator to a String. Why?
       Product product = (Product) it.next();
-      out.print("<tr><td>" + product.getName() + "</td><td>" + product.getPriceInDollars() +
+      out.print("<tr><td><img src='./images/" + product.getImage() + "' height='100'></td><td>" +
+              product.getName() + "</td><td>" + product.getPriceInDollars() +
   "</td><td><label class='form-check-label' for='product" + product.getId() + "'> Add to Cart </label><input class='form-check-input' type='checkbox' name='cartItem' value=" + product.getId() +
               " id='product" + product.getId() + "'> </td>");
 
