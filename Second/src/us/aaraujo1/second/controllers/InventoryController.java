@@ -1,6 +1,7 @@
 package us.aaraujo1.second.controllers;
 
 import us.aaraujo1.second.models.Inventory;
+import us.aaraujo1.second.models.Product;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class InventoryController extends HttpServlet {
-    private static final String RESULT_PAGE = "result.jsp";
+    private static final String RESULT_PAGE = "products.jsp";
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -25,6 +26,30 @@ public class InventoryController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        Inventory inventory = new Inventory();
+        RequestDispatcher dispatcher = null;
+
+        String id = request.getParameter("id");
+        String search = request.getParameter("search");
+        if (id != null) {
+            Product product = inventory.getProductById(Integer.parseInt(id));
+            request.setAttribute("name", product.getName());
+            dispatcher =
+                    request.getRequestDispatcher("/productDetail.jsp");
+        } else if (search != null) {
+            List<Product> productList = inventory.findProducts(search);
+            request.setAttribute("productList", productList);
+            dispatcher =
+                    request.getRequestDispatcher("/products.jsp");
+        } else {
+            List<Product> productList = inventory.getProducts();
+            request.setAttribute("productList", productList);
+            dispatcher =
+                    request.getRequestDispatcher("/products.jsp");
+        }
+
+        dispatcher.forward(request, response);
+
     } // </editor-fold>
 
     /**
@@ -34,6 +59,7 @@ public class InventoryController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -5,36 +5,43 @@ public class Product {
     /*-------------------------- SINGLETON PATTERN --------------------------*/
     /*-----------------------------------------------------------------------*/
     //null instance of class
-    private static Product instance = null;
+    //private static Product instance = null;
 
     /**
      * private constructor of class
      */
 
-    private Product() {
+    /*private Product() {
         //setName(name);
-    }
+    }*/
 
     /**
      * check instance of class
      * @return instance
      */
 
-    public static Product getInstance() {
+    /*public static Product getInstance() {
         if (instance == null) {
             instance = new Product();
         }
         return instance;
-    }
+    }*/
+
+    public Product(int Id, String name, String description, double price, Category category, boolean sale){
+        setId(Id);
+        setName(name);
+        setDescription(description);
+        setPrice(price);
+        setCategory(category);
+        setSale(sale);
+    };
 
 
     /*----------------------------------------------------------------*/
     /*-------------------------- ATTRIBUTES --------------------------*/
     /*----------------------------------------------------------------*/
 
-    /**
-     * string attribute of name of product
-     */
+    private int id;
     private String name;
     private String description;
     private double price;
@@ -59,6 +66,49 @@ public class Product {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public boolean isSale() {
+        return sale;
+    }
+
+    public void setSale(boolean sale) {
+        this.sale = sale;
+    }
+
+    /**
+     * string attribute of name of product
+     */
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
 
