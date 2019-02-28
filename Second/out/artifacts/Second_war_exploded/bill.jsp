@@ -1,8 +1,19 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="us.aaraujo1.second.models.Product" %><%--
+  Created by IntelliJ IDEA.
+  User: andregaraujo
+  Date: 2019-02-27
+  Time: 20:11
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test</title>
+    <title>Shop</title>
     <!--Putting scripts in head before stylesheets-->
     <!--SOURCE: https://stackoverflow.com/questions/9271276/is-the-recommendation-to-include-css-before-javascript-invalid-->
     <!--SOURCE: https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup-->
@@ -35,7 +46,6 @@
 
 </head>
 <body>
-
 <!--HEADER-->
 <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="index.html">
@@ -71,20 +81,30 @@
         </ul>
     </div>
 </nav>
-
 <!--BODY-->
 <div class="container">
-<h1>Test</h1>
-<form method="get" action="first">
-    <input type="text" name="param1"><br/>
-    <input type="submit" value="GET"/></form>
-<form method="post" action="first">
-    <input type="text" name="param1"><br/> <input type="submit" value="POST"/>
-</form>
+    <h3>Final Bill</h3>
+    <form action="bill.go">
+        <table>
+            <%
+                List recs = (List) request.getAttribute("catalog");
+                Iterator it = recs.iterator();
+                double total = 0;
+                while (it.hasNext()) {
+                    Product product = (Product) it.next();
+                    out.print("<tr class='purch'><td> " + product.getName() + " </td><td>" +
+                            String.format("$%3.2f",product.getPrice()) + "</td></tr>");
+                    total+=product.getPrice();
+                }
+                out.print("<tr class='total' ><td>Total:</td><td>" +
+                        String.format("$%3.2f",total) + "</td></tr>");
+            %>
+        </table>
+        <input type="submit" value="Complete Order">
+    </form>
 
 </div>
 
-<!--FOOTER-->
 <footer class="footer">
     <div class="container">
         <span class="text-muted">Place sticky footer content here.</span>
@@ -94,4 +114,3 @@
 
 </body>
 </html>
-

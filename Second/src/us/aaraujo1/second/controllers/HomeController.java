@@ -11,12 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class InventoryController extends HttpServlet {
-    private String RESULT_PAGE = "products.jsp";
+public class HomeController extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    private String RESULT_PAGE = "home.jsp";
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+    } // </editor-fold>
+
     /**
-     * Handles the HTTP <code>GET</code> method. Not currently used.
+     * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -25,7 +31,6 @@ public class InventoryController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         response.setContentType("text/html");
 
         // Create a new instance of a model object
@@ -33,20 +38,20 @@ public class InventoryController extends HttpServlet {
         Inventory inventory = new Inventory();
 
         // Always a good idea to trim and/or validate input data
-        List<Product> productList = inventory.getProducts();
+        List<Product> productsOnSale = inventory.getProductsOnSale();
 
         // Parameters are read only Request object properties, but attributes
         // are read/write. We can use attributes to store data for use on
         // another page.
-        request.setAttribute("productList", productList);
+        request.setAttribute("productsOnSale", productsOnSale);
 
         // This object lets you forward both the request and response
         // objects to a destination page
         RequestDispatcher view =
                 request.getRequestDispatcher(RESULT_PAGE);
         view.forward(request, response);
-
     }
+
 
     @Override
     public String getServletInfo() {

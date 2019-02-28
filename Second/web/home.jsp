@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="us.aaraujo1.second.models.Product" %><%--
   Created by IntelliJ IDEA.
   User: andregaraujo
   Date: 2/6/19
@@ -45,7 +47,7 @@
 <body>
 <!--HEADER-->
 <nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" href="index.jsp">
+  <a class="navbar-brand" href="home.jsp">
     <img src="AA-logo.svg" width="50" height="50" alt="André" class="logo">
     André Araujo
   </a>
@@ -56,23 +58,16 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+
       <li class="nav-item">
-        <a class="nav-link" href="#">About <span class="sr-only">About</span></a>
+        <a class="nav-link" href="inventory.go">Products <span class="sr-only">Products</span></a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false">
-          Shop
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="products.jsp">Products</a>
-          <a class="dropdown-item" href="#">Drawing</a>
-        </div>
+
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+        <a class="nav-link" href="cart.go"><i class="fas fa-shopping-cart"></i> Cart</a>
       </li>
 
     </ul>
@@ -81,13 +76,23 @@
 
 <!--BODY-->
 <div class="container">
-  <h1>Home</h1>
-  <h2>Search for Products</h2>
-  <form method="get" action="InventoryController">
-    <input type="text" name="search"/>
-    <input type="submit" value="Search" />
-  </form>
+  <form action="cartplace.go">
+<ul>
+  <%
+    List recs = (List) request.getAttribute("productsOnSale");
+    Iterator it = recs.iterator();
+    while (it.hasNext()) {
+      // Notice we're outputting some HTML. Is that a good idea?
+      // Also, notice we do not cast the object returned by the
+      // iterator to a String. Why?
+      Product product = (Product) it.next();
+      out.print("<li>" + product.getName() + "- $" + product.getPrice() + " Add to Cart<input type='checkbox' name='cartItem' value=" + product.getId()+ "></li>");
 
+    }
+  %>
+</ul>
+    <input type="submit" value="Purchase">
+  </form>
 
 </div>
 <!--FOOTER-->

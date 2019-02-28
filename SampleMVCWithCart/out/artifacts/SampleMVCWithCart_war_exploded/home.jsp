@@ -21,6 +21,7 @@
             <a href="index.jsp">Home</a>
             <a href="cat.go">Catalog</a>
             <a href="cart.go">Shopping Cart</a>
+            <%-- go to the controller--%>
         </div>
         <br>
     </div>
