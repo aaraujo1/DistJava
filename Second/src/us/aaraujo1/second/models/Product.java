@@ -1,5 +1,7 @@
 package us.aaraujo1.second.models;
 
+import java.text.NumberFormat;
+
 public class Product {
     /*-----------------------------------------------------------------------*/
     /*-------------------------- SINGLETON PATTERN --------------------------*/
@@ -76,8 +78,16 @@ public class Product {
         this.description = description;
     }
 
-    public double getPrice() {
-        return price;
+    public double getPrice(){return price;}
+
+    public String getPriceInDollars() {
+
+
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String priceInDollars = (formatter.format(price));
+
+
+        return priceInDollars;
     }
 
     public void setPrice(double price) {
