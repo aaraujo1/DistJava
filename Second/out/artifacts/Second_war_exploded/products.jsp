@@ -20,7 +20,7 @@
                 <th scope="col">Product</th>
                 <th scope="col"></th>
                 <th scope="col">Cost</th>
-                <th scope="col"></th>
+                <th scope="col">Quantity</th>
             </tr>
             <tbody>
             <%
@@ -31,13 +31,20 @@
                     // Also, notice we do not cast the object returned by the
                     // iterator to a String. Why?
                     Product product = (Product) it.next();
-                    out.print("<tr><td><img src='./images/" + product.getImage() + "' height='100'></td><td>" +
+                    /*out.print("<tr><td><img src='./images/" + product.getImage() + "' height='100'></td><td>" +
                             product.getName() + "</td><td>" + product.getPriceInDollars() +
                             "</td><td><label class='form-check-label' for='product" + product.getId() + "'> Add to Cart </label><input class='form-check-input' type='checkbox' name='cartItem' value=" + product.getId() +
-                            " id='product" + product.getId() + "'> </td>");
+                            " id='product" + product.getId() + "'> </td>");*/
 
                     /*out.print("<tr><td>" + product.getName() + "</td><td>" + product.getPrice() + "</td><td>Add to Cart<input type='checkbox' name='cartItem' value=" + product.getId()+ "></td></tr>");
                      */
+
+                    out.print("<tr><td><img src='./images/" + product.getImage() + "' height='100'></td><td>" +
+                            product.getName() + "</td><td>" + product.getPriceInDollars() +
+                            "</td><td>"+
+                            "<input class='form-control' type=hidden name='cartItem' value=" + product.getId() + ">" +
+                            "<input class='form-control' type='number' min=0 placeholder=0 name='cartItem' value='0'"+
+                            "'> </td>");
                 }
             %>
             </tbody>
