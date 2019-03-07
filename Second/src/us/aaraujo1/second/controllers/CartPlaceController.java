@@ -17,6 +17,23 @@ public class CartPlaceController extends HttpServlet {
         Enumeration paramNames = request.getParameterNames();
         String paramName;
         String theOrder = "";
+
+        Cookie[] cookies = null;
+        cookies = request.getCookies();
+
+        if( cookies != null ) {
+            //a cookie exists
+            //for (int i = 0; i < cookies.length; i++) {
+            for (Cookie cookie : cookies)
+
+                if (cookie.getName().equals("cartItem")) {
+
+                        theOrder += cookie.getValue() + ",";
+
+
+                }
+        }
+
         while(paramNames.hasMoreElements()) {
             paramName = (String)paramNames.nextElement();
             if(paramName.equals("cartItem")) {
@@ -33,13 +50,25 @@ public class CartPlaceController extends HttpServlet {
                         theOrder += paramValues[i] + ",";
                     }
                     theOrder = theOrder.substring(0, theOrder.length() - 1);
+
+                    //cookie as an array
+                    /*for (int i = 0; i < paramValues.length; i+=2) {
+                        theOrder += "[" + paramValues[i] + "," + paramValues[i+1] + "],";
+                    }
+                    theOrder = theOrder.substring(0, theOrder.length() - 1);*/
                 }
             }
         }
-        Cookie items = new Cookie("cartItem", theOrder);
-        // Set expiry date after 24 Hrs for both the cookies.
-        items.setMaxAge(60*60*24);
-        response.addCookie( items );
+
+
+
+            //remake cookie
+            Cookie items = new Cookie("cartItem", theOrder);
+            // Set expiry date after 24 Hrs for both the cookies.
+            items.setMaxAge(60 * 60 * 24);
+            response.addCookie(items);
+
+
 
         String site = new String("index.jsp");
         response.setStatus(response.SC_MOVED_TEMPORARILY);
