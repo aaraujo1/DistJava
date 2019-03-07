@@ -72,7 +72,7 @@ public class Inventory {
         List<Product> productList = new ArrayList<Product>();
 
         for (Product p : productsList) {
-            if (p.getName().equals(name)) {
+            if (p.getName().contains(name)) {
                 productList.add(p);
             }
         }
