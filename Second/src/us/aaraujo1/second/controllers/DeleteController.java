@@ -40,9 +40,23 @@ public class DeleteController extends HttpServlet {
                 cookie = cookies[i];
                 out.print(cookie.getValue());
                 if (cookie.getName().equals("cartItem")) {
-                    if(cookie.getValue( ).equals(paramVal)) {
+                    /*if(cookie.getValue( ).equals(paramVal)) {
                         productList = orderedItems(cookie.getValue());
-                    }
+                    }*/
+
+                    //if it's a cartItem cookie
+                    //change cookie value
+
+                    String cookieValue = deleteItem(cookie.getValue(), paramVal);
+
+                    Cookie newCookie = new Cookie("cartItem", cookieValue);
+
+                    //cookie.setValue(cookieValue);
+                    newCookie.setMaxAge(60 * 60 * 24);
+                    response.addCookie(newCookie);
+
+
+                    productList = orderedItems(newCookie.getValue());
                 }
             }
         }
@@ -62,4 +76,32 @@ public class DeleteController extends HttpServlet {
         }
         return productList;
     }
+
+    protected String deleteItem(String itemsNumbers, String itemToRemove) {
+        //List<Product> productList = new ArrayList<>();
+        //Inventory inventory = new Inventory();
+        String cookieValue = "";
+        String[] nums = itemsNumbers.split(",");
+        for (int i = 0; i < nums.length; i++) {
+            //check if array item equal item to remove
+            if (!nums[i].equals(itemToRemove)) {
+                //if it doesn't match, add to list
+                cookieValue += nums[i] + ",";
+            }
+        }
+        try{
+            cookieValue = cookieValue.substring(0, cookieValue.length() - 1);
+        }catch (Exception e){
+            //out of bounds
+            //java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+        }
+
+
+        return cookieValue;
+
+    }
+
+
+
+
 }

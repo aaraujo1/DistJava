@@ -1,0 +1,9 @@
+Complete the Project using JSP.
+
+The site should include a catalog page that displays all inventory items and also includes a search.  The user should be able to add the item to the cart from either the full listing or the search results.  The user should be able to select the number of items to add to the cart.
+
+The cart should allow the user to remove the items from the cart or change the number of items.
+
+From the Cart page, there should be a "Purchase Button".  This button will produce a Bill that lists the item purchased, adds up the price and lists the total, includes the sales tax (at 8.5%), and the grand total.
+
+This project is to be demonstrated to the instructor on either March 6th or is ready at the beginning of class on March 13th.

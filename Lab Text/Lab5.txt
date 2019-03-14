@@ -1,9 +1,41 @@
-Complete the Project using JSP.
+Part A
+From GitHub, pull DBSample
+Review the code
+Set-Up the connection in IntelliJ
+Practice writing scripts in the Script Editor
+Insert
+Delete
+Edit
+Update
 
-The site should include a catalog page that displays all inventory items and also includes a search.  The user should be able to add the item to the cart from either the full listing or the search results.  The user should be able to select the number of items to add to the cart.
+Part B
+Create a new Console Project
+This project should create a database with two tables:
+One for the products your web application is selling
+One for a Shopping cart to purchase the items
+The program should use a menu to allow the user to list the items, add an item to the cart and list the contents of the cart.
 
-The cart should allow the user to remove the items from the cart or change the number of items.
 
-From the Cart page, there should be a "Purchase Button".  This button will produce a Bill that lists the item purchased, adds up the price and lists the total, includes the sales tax (at 8.5%), and the grand total.
 
-This project is to be demonstrated to the instructor on either March 6th or is ready at the beginning of class on March 13th.
+
+ ̈ Create a new Console Project
+ ̈ This project should create a database with two
+tables:
+¤ One for the products your web application is selling ¤ One for a Shopping cart to purchase the items
+ ̈ The program should use a menu to allow the user to list the items, add an item to the cart and list the contents of the cart.
+
+
+
+1. View Items
+2. View Cart
+-------------
+View 1 item
+1. Shoe
+2. Belt
+B. Buy
+=b
+-------------
+-
+-
+-
+-
