@@ -92,11 +92,11 @@ public class DessertDB {
             // Create the table.
             stmt.execute("CREATE TABLE Dessert (" +
                     "ID INTEGER NOT NULL PRIMARY KEY, " +
-                    "DessertName CHAR(25)," +
-                    "Description CHAR(25), " +
+                    "DessertName VARCHAR(100)," +
+                    "Description VARCHAR(250), " +
                     "Price DOUBLE, " +
                     "Category CHAR(25), " +
-                    "Sale BIT" +
+                    "Sale BOOLEAN" +
                     ")");
 
             // Insert row #1.
@@ -106,7 +106,7 @@ public class DessertDB {
                     "'dessert with...'," +
                     "15.00,"+
                     "'DESSERT'," +
-                    "0 )");
+                    "true )");
 
 
             // Insert row #2.
@@ -116,7 +116,7 @@ public class DessertDB {
                     "'dessert with...'," +
                     "25.00,"+
                     "'CAKE'," +
-                    "1 )");
+                    "false )");
 
             // Insert row #3.
             stmt.execute("INSERT INTO Dessert VALUES ( " +
@@ -125,7 +125,7 @@ public class DessertDB {
                     "'dessert with...'," +
                     "10.00,"+
                     "'COOKIE'," +
-                    "1 )");
+                    "false )");
 
             // Insert row #4.
             stmt.execute("INSERT INTO Dessert VALUES ( " +
@@ -134,7 +134,7 @@ public class DessertDB {
                     "'dessert with...'," +
                     "5.00,"+
                     "'CAKE'," +
-                    "0 )");
+                    "true )");
 
 
             System.out.println("Dessert table created.");
@@ -145,8 +145,8 @@ public class DessertDB {
     }
 
     /**
-     * The buildCustomerTable method creates the
-     * Customer table and adds some rows to it.
+     * The buildCartTable method creates the
+     * Cart table and adds some rows to it.
      */
     public static void buildCartTable(Connection conn)
     {
@@ -157,28 +157,20 @@ public class DessertDB {
 
             // Create the table.
             stmt.execute("CREATE TABLE Cart( " +
-                    "  CustomerNumber CHAR(10) NOT NULL PRIMARY KEY, " +
-                    "  DessertName CHAR(25)," +
-                    "  Address CHAR(25)," +
-                    "  City CHAR(12)," +
-                    "  State CHAR(2)," +
-                    "  Zip CHAR(5) )");
+                    " ID INT NOT NULL PRIMARY KEY,"+
+                    " CartID INT" +
+                    "  DessertName CHAR(100)," +
+                    "  Quantity INTEGER)" );
+
 
             // Add some rows to the new table.
-            stmt.executeUpdate("INSERT INTO Customer VALUES" +
-                    "('101', 'Downtown Cafe', '17 N. Main Street'," +
-                    " 'Asheville', 'NC', '55515')");
+            stmt.executeUpdate("INSERT INTO Cart VALUES" +
+                    "(1, 1,'Peanut Butter Stuffed Chocolate Cookies', 2)");
 
-            stmt.executeUpdate("INSERT INTO Customer VALUES" +
-                    "('102', 'Main Street Grocery'," +
-                    " '110 E. Main Street'," +
-                    " 'Canton', 'NC', '55555')");
+            stmt.executeUpdate("INSERT INTO Cart VALUES" +
+                    "(2, 1,'Chocolate Chip Cookie Dough Cupcakes', 3)");
 
-            stmt.executeUpdate("INSERT INTO Customer VALUES" +
-                    "('103', 'The Coffee Place', '101 Center Plaza'," +
-                    " 'Waynesville', 'NC', '55516')");
-
-            System.out.println("Customer table created.");
+            System.out.println("Cart table created.");
         } catch (SQLException ex)
         {
             System.out.println("ERROR: " + ex.getMessage());

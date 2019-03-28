@@ -12,7 +12,7 @@ public class Main {
     }
 
     public static void addContent() {
-        final String DB_URL = "jdbc:derby:CoffeeDB";
+        final String DB_URL = "jdbc:derby:DessertDB";
         Statement stmt = null;
         Connection conn = null;
         try{
@@ -23,18 +23,13 @@ public class Main {
             System.out.println("Inserting records into the table...");
             stmt = conn.createStatement();
 
-            String sql = "INSERT INTO Coffee " +
-                    "VALUES ('Bering Sea Blend' , '20-110',  18.55)";
+            String sql = "INSERT INTO Dessert " +
+                    "VALUES (5, 'Classic Mint Chocolate Brownies' , 'dessert with...',  8.50, 'DESSERT', true)";
             stmt.executeUpdate(sql);
-            sql = "INSERT INTO Coffee " +
-                    "VALUES ('Bali Blue Moon', '20-115', 15.45)";
+            sql = "INSERT INTO Dessert " +
+                    "VALUES (6, 'Chocolate Whiskey Cupcakes', 'dessert with...', 15.45, 'CAKE', false)";
             stmt.executeUpdate(sql);
-            sql = "INSERT INTO Coffee " +
-                    "VALUES ('Brazil Mogiana', '20-120', 11.30)";
-            stmt.executeUpdate(sql);
-            sql = "INSERT INTO Coffee " +
-                    "VALUES('Ethiopia Harrar', '20-125', 12.28)";
-            stmt.executeUpdate(sql);
+
             System.out.println("Inserted records into the table...");
             //Clean-up environment
             stmt.close();
@@ -63,7 +58,7 @@ public class Main {
 
 
     public static void outputDB() {
-        final String DB_URL = "jdbc:derby:CoffeeDB";
+        final String DB_URL = "jdbc:derby:DessertDB";
         Statement stmt = null;
         Connection conn = null;
         try{
@@ -72,19 +67,21 @@ public class Main {
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
-            sql = "SELECT ProdNum, Description, Price FROM Coffee";
+            sql = "SELECT ID, DessertName, Price FROM Dessert";
             ResultSet rs = stmt.executeQuery(sql);
 
             while(rs.next()){
                 //Retrieve by column name
-                String id  = rs.getString("ProdNum");
+                int id  = rs.getInt("ID");
+                String name = rs.getString("DessertName");
                 double price = rs.getDouble("Price");
-                String description = rs.getString("Description");
+
 
                 //Display values
-                System.out.print("ID: " + id.trim());
+                System.out.print("ID: " + id);
+                System.out.println(", Dessert Name: " + name);
                 System.out.print(", Price: " + price);
-                System.out.println(", Description: " + description);
+
             }
             //STEP 6: Clean-up environment
             rs.close();

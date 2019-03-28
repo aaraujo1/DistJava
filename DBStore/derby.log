@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Wed Mar 27 19:05:11 CDT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0169-c19d-62af-00000e4d5ce0 
+on database directory /Users/andregaraujo/IdeaProjects/DistJava/DBStore/DessertDB with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/Users/andregaraujo/Glassfish/glassfish5/javadb/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_101-b13
+user.dir=/Users/andregaraujo/IdeaProjects/DistJava/DBStore
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.14.4
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
