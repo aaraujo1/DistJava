@@ -3,16 +3,16 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DessertDB {
+public class DBCreate {
 
-    public DessertDB()
+    public DBCreate()
     {
 
         try
         {
             // Create a named constant for the URL.
             // NOTE: This value is specific for Java DB.
-            final String DB_URL = "jdbc:derby:DessertDB;create=true";
+            final String DB_URL = "jdbc:derby:DBCreate;create=true";
 
             // Create a connection to the database.
             Connection conn =
@@ -52,7 +52,7 @@ public class DessertDB {
 
             try
             {
-                // Drop the Customer table.
+                // Drop the Cart table.
                 stmt.execute("DROP TABLE Cart");
                 System.out.println("Cart table dropped.");
             } catch (SQLException ex)
@@ -158,9 +158,9 @@ public class DessertDB {
             // Create the table.
             stmt.execute("CREATE TABLE Cart( " +
                     " ID INT NOT NULL PRIMARY KEY,"+
-                    " CartID INT" +
-                    "  DessertName CHAR(100)," +
-                    "  Quantity INTEGER)" );
+                    " CartID INT," +
+                    " DessertName CHAR(100)," +
+                    " Quantity INT)" );
 
 
             // Add some rows to the new table.
@@ -176,5 +176,7 @@ public class DessertDB {
             System.out.println("ERROR: " + ex.getMessage());
         }
     }
+
+
 
 }
