@@ -136,6 +136,14 @@ public class DBCreate {
                     "'CAKE'," +
                     "true )");
 
+            String sql = "INSERT INTO Dessert " +
+                    "VALUES (5, 'Classic Mint Chocolate Brownies' , 'dessert with...',  8.50, 'DESSERT', true)";
+            stmt.executeUpdate(sql);
+            sql = "INSERT INTO Dessert " +
+                    "VALUES (6, 'Chocolate Whiskey Cupcakes', 'dessert with...', 15.45, 'CAKE', false)";
+            stmt.executeUpdate(sql);
+
+
 
             System.out.println("Dessert table created.");
         } catch (SQLException ex)

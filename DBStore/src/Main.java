@@ -5,24 +5,50 @@ import models.Product;
 
 import java.sql.*;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Main {
+
+    //Scanner to talk to user
+    private static Scanner k = new Scanner(System.in);
 
     public static void main(String[] args) {
 
         DBCreate dessertDB = new DBCreate();
 //        outputDB();
+        System.out.println("==========================");
+        System.out.println("Loading Inventory");
+        System.out.println("==========================");
         Inventory inventory = Inventory.getInstance();
         for (Product p: inventory.getProducts()
              ) {
             System.out.println(p);
         }
-        //addContent();
+
+        System.out.println("==========================");
+        System.out.println("Loading Cart");
         System.out.println("==========================");
         Cart cart = Cart.getInstance();
         for (Map.Entry<Product, Integer> entry: cart.getCart().entrySet()){
             System.out.println("Product: " + entry.getKey() + " Quantity: " + entry.getValue());
         }
+
+        System.out.println("\n==========================");
+        System.out.println("MENU");
+        System.out.println("==========================");
+
+        /**The program should use a menu to allow the user to list the items,
+         * add an item to the cart,
+         * and list the contents of the cart.
+         */
+        System.out.println("Please choose an option\n");
+        System.out.println("1. View inventory");
+        System.out.println("2. Add item to cart");
+        System.out.println("3. View cart");
+
+        int option = k.nextInt();
+
+
         //outputDB();
     }
 
