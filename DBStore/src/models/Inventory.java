@@ -80,6 +80,14 @@ public class Inventory {
     }
 
 
+    public void listAllProducts(){
+
+        for (Product p: this.getProducts()
+        ) {
+            System.out.println(p);
+        }
+    }
+
     public Product getProductById(int id) {
         for (Product p : productsList) {
             if (p.getId() == (id)) {

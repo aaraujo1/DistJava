@@ -11,6 +11,7 @@ public class Main {
 
     //Scanner to talk to user
     private static Scanner k = new Scanner(System.in);
+    private static int option = 0;
 
     public static void main(String[] args) {
 
@@ -20,36 +21,75 @@ public class Main {
         System.out.println("Loading Inventory");
         System.out.println("==========================");
         Inventory inventory = Inventory.getInstance();
-        for (Product p: inventory.getProducts()
-             ) {
-            System.out.println(p);
-        }
+
 
         System.out.println("==========================");
         System.out.println("Loading Cart");
         System.out.println("==========================");
         Cart cart = Cart.getInstance();
-        for (Map.Entry<Product, Integer> entry: cart.getCart().entrySet()){
-            System.out.println("Product: " + entry.getKey() + " Quantity: " + entry.getValue());
-        }
-
-        System.out.println("\n==========================");
-        System.out.println("MENU");
-        System.out.println("==========================");
-
-        /**The program should use a menu to allow the user to list the items,
-         * add an item to the cart,
-         * and list the contents of the cart.
-         */
-        System.out.println("Please choose an option\n");
-        System.out.println("1. View inventory");
-        System.out.println("2. Add item to cart");
-        System.out.println("3. View cart");
-
-        int option = k.nextInt();
 
 
-        //outputDB();
+
+        do {
+            menu();
+
+            switch (option){
+                case 1:
+                    //list inventory
+                    inventory.listAllProducts();
+                    break;
+                case 2:
+                    //add item to cart
+                    cart.addItemToCart();
+                    break;
+                case 3:
+                    //list cart
+                    for (Map.Entry<Product, Integer> entry: cart.getCart().entrySet()){
+                        System.out.println("Product: " + entry.getKey() + " Quantity: " + entry.getValue());
+                    }
+                    break;
+                default:
+            }
+
+        } while(option!=4);
+
+
+    }
+
+    public static int menu(){
+        do {
+            System.out.println("\n==========================");
+            System.out.println("MENU");
+            System.out.println("==========================");
+
+            /**The program should use a menu to allow the user to list the items,
+             * add an item to the cart,
+             * and list the contents of the cart.
+             */
+            System.out.println("Please choose an option\n");
+            System.out.println("1. View inventory");
+            System.out.println("2. Add item to cart");
+            System.out.println("3. View cart");
+            System.out.println("4. End Program");
+
+            try {
+                option = k.nextInt();
+
+                //if user DID enter an integer, but not a valid one
+                if (option < 1 || option > 4) {
+                    System.out.println("Please enter 1, 2, 3 or 4.");
+                }
+            } catch (Exception e) {
+                //warn user if they did not enter an integer
+                System.out.println("You did not enter a number.");
+                //clear Scanner
+                k.nextLine();
+            }
+
+        }while (option == 0);
+
+
+        return option;
     }
 
     public static void addContent() {

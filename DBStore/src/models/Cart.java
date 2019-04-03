@@ -3,6 +3,7 @@ package models;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Cart {
 
@@ -13,6 +14,9 @@ public class Cart {
     private Map<Product, Integer> cart = new HashMap<Product, Integer>();
 
     private  Inventory inventory = Inventory.getInstance();
+
+    //Scanner to talk to user
+    private Scanner k = new Scanner(System.in);
 
     /*-----------------------------------------------------------------------*/
     /*-------------------------- SINGLETON PATTERN --------------------------*/
@@ -55,6 +59,48 @@ public class Cart {
 
     public void addToCart(Product p, Integer integer){
         cart.put(p, integer);
+    }
+
+    public void addItemToCart(){
+        //list inventory
+        inventory.listAllProducts();
+
+        System.out.println("Choose a product ID to add");
+
+        int option = 0;
+        Product p = null;
+
+        do {
+            try {
+                option = k.nextInt();
+
+                //if user DID enter an integer, but not a valid one
+                p = inventory.getProductById(option);
+
+
+                boolean added = false;
+                //check if already in cart
+                for (Map.Entry<Product, Integer> entry: getCart().entrySet()){
+                    if (entry.getKey().equals(p)){
+                        entry.setValue(entry.getValue() + 1);
+                        added = true;
+                    }
+                }
+
+                if (!added){
+                    addToCart(p, 1);
+                }
+
+            } catch (Exception e) {
+                //warn user if they did not enter an integer
+                System.out.println("Not a valid product ID");
+                //clear Scanner
+                k.nextLine();
+                option = 0;
+            }
+        }while(option==0);
+
+
     }
 
     public void readDB() {
