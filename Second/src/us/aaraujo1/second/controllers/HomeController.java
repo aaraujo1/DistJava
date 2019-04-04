@@ -35,7 +35,7 @@ public class HomeController extends HttpServlet {
 
         // Create a new instance of a model object
         // For some applications, we would not want to create a new one each time.
-        Inventory inventory = new Inventory();
+        Inventory inventory = Inventory.getInstance();
 
         // Always a good idea to trim and/or validate input data
         List<Product> productsOnSale = inventory.getProductsOnSale();

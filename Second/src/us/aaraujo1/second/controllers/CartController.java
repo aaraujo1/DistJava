@@ -49,7 +49,7 @@ public class CartController extends HttpServlet {
 
     protected List<Product> orderedItems(String itemsNumbers) {
         List<Product> productList = new ArrayList<>();
-        Inventory inventory = new Inventory();
+        Inventory inventory = Inventory.getInstance();
         String[] nums = itemsNumbers.split(",");
         for (int i=0;i<nums.length;i++) {
             productList.add(inventory.getProductById(Integer.parseInt(nums[i])));
