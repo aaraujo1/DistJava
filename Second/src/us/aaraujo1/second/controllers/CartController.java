@@ -1,5 +1,6 @@
 package us.aaraujo1.second.controllers;
 
+import us.aaraujo1.second.models.Cart;
 import us.aaraujo1.second.models.Category;
 import us.aaraujo1.second.models.Inventory;
 import us.aaraujo1.second.models.Product;
@@ -14,7 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "CartServlet")
 public class CartController extends HttpServlet {
@@ -56,4 +59,18 @@ public class CartController extends HttpServlet {
         }
         return productList;
     }
+
+    /*protected Map<Product, Integer> orderedItems(String itemsNumbers) {
+        //Map<Product, Integer> productList = new HashMap<>();
+        Cart cart = Cart.getInstance();
+
+        String[] nums = itemsNumbers.split(",");
+
+        for (int i=0;i<nums.length;i++) {
+            cart.addItemToCart(Integer.parseInt(nums[i]));
+        }
+
+
+        return cart.getCart();
+    }*/
 }

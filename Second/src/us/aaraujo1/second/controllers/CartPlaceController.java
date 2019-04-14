@@ -17,7 +17,7 @@ public class CartPlaceController extends HttpServlet {
         Enumeration paramNames = request.getParameterNames();
         String paramName;
         String theOrder = "";
-        String theAmmount = "";
+        String theAmount = "";
 
         Cookie[] cookies = null;
         cookies = request.getCookies();

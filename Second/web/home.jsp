@@ -33,10 +33,13 @@
       Product product = (Product) it.next();
 
       //cookie as id
-      out.print("<tr><td><img src='./images/" + product.getImage() + "' height='100'></td><td>" +
-              product.getName() + "</td><td>" + product.getPriceInDollars() +
-  "</td><td><label class='form-check-label' for='product" + product.getId() + "'> Add to Cart </label><input class='form-check-input' type='checkbox' name='cartItem' value=" + product.getId() +
-              " id='product" + product.getId() + "'> </td>");
+      out.print("<tr><td><img src='./images/" + product.getImage() +
+              "' height='100'></td><td>" + product.getName() +
+              "</td><td>" + product.getPriceInDollars() +
+              "</td><td><label class='form-check-label' for='product" + product.getId() +
+              "'> Add to Cart </label><input class='form-check-input' type='checkbox' name='cartItem' value=" + product.getId() +
+              " id='product" + product.getId() +
+              "'> </td>");
 
 
 

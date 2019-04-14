@@ -39,8 +39,9 @@
                     /*out.print("<tr><td>" + product.getName() + "</td><td>" + product.getPrice() + "</td><td>Add to Cart<input type='checkbox' name='cartItem' value=" + product.getId()+ "></td></tr>");
                      */
 
-                    out.print("<tr><td><img src='./images/" + product.getImage() + "' height='100'></td><td>" +
-                            product.getName() + "</td><td>" + product.getPriceInDollars() +
+                    out.print("<tr><td><img src='./images/" + product.getImage() +
+                            "' height='100'></td><td>" +  product.getName() +
+                            "</td><td>" + product.getPriceInDollars() +
                             "</td><td>"+
                             "<input class='form-control' type=hidden name='cartItem' value=" + product.getId() + ">" +
                             "<input class='form-control' type='number' min=0 placeholder=0 name='cartItem' value='0'"+

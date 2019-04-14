@@ -62,21 +62,21 @@ public class Cart {
         cart.put(p, integer);
     }
 
-    public void addItemToCart(){
+    public void addItemToCart(int id){
         //list inventory
-        inventory.listAllProducts();
+        //inventory.listAllProducts();
 
-        System.out.println("Choose a product ID to add");
+        //System.out.println("Choose a product ID to add");
 
-        int option = 0;
+        //int option = 0;
         Product p = null;
 
-        do {
+        //do {
             try {
-                option = k.nextInt();
+                //option = k.nextInt();
 
                 //if user DID enter an integer, but not a valid one
-                p = inventory.getProductById(option);
+                p = inventory.getProductById(id);
 
 
                 boolean added = false;
@@ -97,9 +97,9 @@ public class Cart {
                 System.out.println("Not a valid product ID");
                 //clear Scanner
                 k.nextLine();
-                option = 0;
+                //option = 0;
             }
-        }while(option==0);
+        //}while(option==0);
 
 
     }
@@ -154,5 +154,19 @@ public class Cart {
                 se.printStackTrace();
             }//end finally try
         }//end try
+    }
+
+
+    public String returnCart(){
+
+        if (!this.getCart().isEmpty()) {
+            for (Map.Entry<Product, Integer> entry : this.getCart().entrySet()) {
+                return ("Product: " + entry.getKey() + " Quantity: " + entry.getValue());
+            }
+        }else{
+            return "empty";
+        }
+
+        return null;
     }
 }

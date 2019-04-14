@@ -1,5 +1,7 @@
 package us.aaraujo1.second.controllers;
 
+import us.aaraujo1.second.models.Cart;
+import us.aaraujo1.second.models.DBCreate;
 import us.aaraujo1.second.models.Inventory;
 import us.aaraujo1.second.models.Product;
 
@@ -33,9 +35,18 @@ public class HomeController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
 
+
+        //creat DB
+        DBCreate dessertDB = new DBCreate();
+
+
         // Create a new instance of a model object
         // For some applications, we would not want to create a new one each time.
         Inventory inventory = Inventory.getInstance();
+
+        // Create a new instance of a model object
+        // For some applications, we would not want to create a new one each time.
+        Cart cart = Cart.getInstance();
 
         // Always a good idea to trim and/or validate input data
         List<Product> productsOnSale = inventory.getProductsOnSale();
